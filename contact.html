@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact - Kelly Bootstrap Template</title>
+  <title>Contact - Ishan</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -27,13 +27,155 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Kelly
-  * Template URL: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
+    <style>
+      #contact-form {
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 700px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .col-md-6 {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .col-md-12 {
+            width: 100%;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #00aaff;
+            outline: none;
+        }
+        button[type="submit"] {
+            background-color: #00aaff;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #008ecc;
+        }
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+
+            .col-md-6 {
+                width: 100%;
+            }
+
+            .col-md-12 {
+                width: 100%;
+            }
+        }
+
+
+
+        #success-alert {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #8fea92;
+          color: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+          z-index: 1000;
+          text-align: center; 
+          width: 300px;
+        }
+
+        #success-alert p {
+          margin: 0;
+          font-size: 18px; 
+        }
+
+        #success-alert button {
+          margin-top: 20px;
+          padding: 8px 12px;
+          background-color: white;
+          color: #4CAF50;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        #success-alert button:hover {
+          background-color: #3e8e41;
+          color: white;
+        }
+
+        .hidden {
+          display: none;
+        }
+    </style>
+
+
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      emailjs.init("1bSLoN5f_KXVnrtpe"); // Replace with your actual EmailJS Public Key
+
+      function clearForm() {
+        document.querySelector('input[name="from_name"]').value = '';
+        document.querySelector('input[name="email"]').value = '';
+        document.querySelector('textarea[name="message"]').value = '';
+      }
+
+      function showAlert() {
+      document.getElementById('success-alert').classList.remove('hidden');
+      }
+
+      function closeAlert() {
+      document.getElementById('success-alert').classList.add('hidden');
+      }
+
+      window.closeAlert = closeAlert;
+
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          emailjs.send('service_ti4lam8', 'template_grosodg', {
+              from_name: this.from_name.value,
+              email: this.email.value,
+              message: this.message.value
+          })
+          .then(() => {
+              showAlert();
+              clearForm();
+          }, (error) => {
+              console.error("Failed to send message: ", error);
+              alert("Failed to send message. Please try again.");
+          });
+      });
+  });
+</script>
 </head>
 
 <body class="contact-page">
@@ -42,59 +184,39 @@
     <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Kelly</h1>
+
+        <h1 class="sitename">Ishan</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="services.html">Services</a></li>
+          <li><a href="resume.html">Work & Education</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
           <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/ishan-madhani/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/ishan0410" target="_blank" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://www.instagram.com/ishan.m_30/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/ishan_madhani" target="_blank" class="twitter"><i class="bi bi-twitter-x"></i></a>
       </div>
 
     </div>
   </header>
 
   <main class="main">
-
     <!-- Contact Section -->
     <section id="contact" class="contact section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Don’t hesitate to get in touch—just a call or email away!</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -108,65 +230,62 @@
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
                   <h3>Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <p>2707 Portland Street, Los Angeles, CA 90007</p>
                 </div>
               </div><!-- End Info Item -->
 
               <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                 <i class="bi bi-telephone flex-shrink-0"></i>
                 <div>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
+                  <h3>Call me</h3>
+                  <p>+1 (562) 388-8381</p>
                 </div>
               </div><!-- End Info Item -->
 
               <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
-                  <h3>Email Us</h3>
-                  <p>info@example.com</p>
+                  <h3>Email Me</h3>
+                  <p>imadhani@usc.edu</p>
+                  <p>ishan.madhani@gmail.com</p>
                 </div>
               </div><!-- End Info Item -->
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.554312043096!2d-118.28571262407753!3d34.029649473165456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7ef204d5e7b%3A0x671c8a485df3ef0d!2sUniversity%20Park%2C%20Los%20Angeles%2C%20CA%2090007!5e0!3m2!1sen!2sus!4v1727392102447!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
 
           <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form id="contact-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
 
                 <div class="col-md-6">
                   <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                  <input type="text" name="from_name" placeholder="Name" required="">
                 </div>
 
                 <div class="col-md-6">
                   <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                  <input type="email" name="email" placeholder="Email" required="">
                 </div>
 
+                <label for="message-field" class="pb-2">Message:- </label>
                 <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                  <textarea name="message" placeholder="Your Message" rows="10" id="message" required=""></textarea>
                 </div>
 
-                <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                </div>
+                
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
                   <button type="submit">Send Message</button>
                 </div>
 
+                <div id="success-alert" class="hidden">
+                  <p>Message sent successfully!</p>
+                  <button onclick="closeAlert()">Close</button>
+                </div>
               </div>
-            </form>
-          </div><!-- End Contact Form -->
+          </form>
+          <!--End Contact Form -->
 
         </div>
 
@@ -180,21 +299,15 @@
 
     <div class="container">
       <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Kelly</strong> <span>All Rights Reserved<br></span></p>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Ishan</strong> <span>All Rights Reserved<br></span></p>
       </div>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/ishan-madhani/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/ishan0410" target="_blank" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://www.instagram.com/ishan.m_30/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/ishan_madhani" target="_blank" class="twitter"><i class="bi bi-twitter-x"></i></a>
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      
     </div>
 
   </footer>
