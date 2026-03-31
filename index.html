@@ -1171,7 +1171,7 @@ setTimeout(typeLoop,1200);
 emailjs.init("1bSLoN5f_KXVnrtpe");
 document.getElementById('contact-form').addEventListener('submit',function(e){
   e.preventDefault();
-  emailjs.send('service_ti4lam8','template_grosodg',{
+  emailjs.send('service_bkbwmwr','template_grosodg',{
     from_name:this.from_name.value,email:this.email.value,message:this.message.value
   }).then(()=>{document.getElementById('success-alert').classList.remove('hidden');this.reset()},
   err=>{console.error(err);alert("Failed to send. Please try again.")});
