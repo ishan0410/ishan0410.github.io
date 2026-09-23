@@ -560,7 +560,9 @@
       background:rgba(255,255,255,.04);color:#9ca3af;display:flex;align-items:center;justify-content:center;transition:all .2s;
     }
     .chat-close:hover{background:rgba(255,255,255,.1);color:#fff}
-    .chat-log{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+    .chat-log{flex:1;overflow-y:auto;overflow-x:hidden;padding:18px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+    .chat-log::-webkit-scrollbar{width:6px;height:0}
+    .chat-log::-webkit-scrollbar-track{background:transparent}
     .chat-msg{
       max-width:86%;padding:10px 14px;border-radius:14px;
       font-size:.86rem;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;
