@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Apply the saved theme before first paint so there is no dark-to-light flash.
+    try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}
+  </script>
   <title>Ishan Madhani | Software Engineer</title>
   <meta name="description" content="Ishan Madhani — MS CS @ USC | Software Engineer specializing in Backend, APIs, Distributed Systems, and AI/ML.">
   <meta name="keywords" content="Ishan Madhani, Software Engineer, USC, Backend, AI/ML, Python, AWS, Distributed Systems">
@@ -333,6 +337,54 @@
       border-radius:6px;background:rgba(99,102,241,.08);color:#a5b4fc;
       border:1px solid rgba(99,102,241,.12);
     }
+    .proj-card{display:flex;flex-direction:column}
+    .proj-card p{flex:1}
+    .proj-cat{
+      font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;
+      letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;
+    }
+    .proj-cat-ai{color:#818cf8}
+    .proj-cat-web{color:#34d399}
+    .proj-cat-ml{color:#f0abfc}
+    .proj-impact{
+      font-family:'JetBrains Mono',monospace;font-size:.74rem;color:#34d399;
+      padding:8px 12px;margin-bottom:16px;border-radius:8px;
+      background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.14);
+    }
+    .proj-demo{
+      align-self:flex-start;margin-top:16px;font-size:.8rem;font-weight:600;color:#818cf8;
+      padding:7px 14px;border-radius:9px;border:1px solid rgba(99,102,241,.3);background:rgba(99,102,241,.08);
+      transition:all .3s;
+    }
+    .proj-demo:hover{background:rgba(99,102,241,.18);color:#fff}
+    .proj-filters{display:flex;flex-wrap:wrap;gap:10px;margin:-24px 0 36px}
+    .proj-filter{
+      display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;cursor:pointer;
+      font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;color:#9ca3af;
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);transition:all .25s;
+    }
+    .proj-filter span{
+      font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#6b7280;
+      padding:1px 7px;border-radius:100px;background:rgba(255,255,255,.06);
+    }
+    .proj-filter:hover{color:#fff;border-color:rgba(99,102,241,.3)}
+    .proj-filter[aria-pressed="true"]{color:#fff;background:rgba(99,102,241,.16);border-color:rgba(99,102,241,.45)}
+    .proj-filter[aria-pressed="true"] span{color:#c7d2fe;background:rgba(99,102,241,.3)}
+    .proj-group{
+      grid-column:1/-1;display:none;margin-top:12px;
+      font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:600;letter-spacing:3px;
+      text-transform:uppercase;color:#6b7280;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .proj-group:first-child{margin-top:0}
+    .projects-grid[data-view="all"] .proj-group{display:block}
+    .proj-card.is-hidden{display:none}
+    .proj-more{text-align:center;margin-top:36px}
+    .proj-more button{
+      padding:11px 24px;border-radius:12px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:600;
+      color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6);border:none;transition:all .3s;
+    }
+    .proj-more button:hover{box-shadow:0 8px 32px rgba(99,102,241,.4);transform:translateY(-2px)}
+    .proj-more.is-hidden{display:none}
 
     /* ===== EDUCATION ===== */
     #education{background:linear-gradient(180deg,#06060a 0%,#0a0a12 100%)}
@@ -355,7 +407,8 @@
 
     .certs-section{margin-top:56px}
     .certs-section h3{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:24px}
-    .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .cert-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+    @media(max-width:1100px){.cert-grid{grid-template-columns:repeat(3,1fr)}}
     .cert-card{
       display:flex;flex-direction:column;align-items:center;gap:14px;
       padding:28px 20px;border-radius:20px;text-align:center;
@@ -394,6 +447,9 @@
     .cert-card.aws{--cert-accent:linear-gradient(90deg,#ff9900,#ffb84d);--cert-bg:rgba(255,153,0,.1);--cert-color:#ff9900;--cert-shadow:rgba(255,153,0,.15)}
     .cert-card.hr{--cert-accent:linear-gradient(90deg,#00ea64,#2ec866);--cert-bg:rgba(0,234,100,.08);--cert-color:#00ea64;--cert-shadow:rgba(0,234,100,.12)}
     .cert-card.coursera{--cert-accent:linear-gradient(90deg,#0056d2,#2986ff);--cert-bg:rgba(0,86,210,.1);--cert-color:#0056d2;--cert-shadow:rgba(0,86,210,.15)}
+    .cert-card.anthropic{--cert-accent:linear-gradient(90deg,#d97757,#e8a17f);--cert-bg:rgba(217,119,87,.12);--cert-color:#d97757;--cert-shadow:rgba(217,119,87,.15)}
+    .cert-card .cert-verify{margin-top:auto}
+    .cert-mono{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;line-height:1}
     .cert-card.udemy{--cert-accent:linear-gradient(90deg,#a435f0,#c77dff);--cert-bg:rgba(164,53,240,.1);--cert-color:#a435f0;--cert-shadow:rgba(164,53,240,.15)}
 
     .cp-section{margin-top:48px}
@@ -420,6 +476,22 @@
     }
     .heatmap-card-header a:hover{color:#a5b4fc}
     .heatmap-card img{width:100%;height:auto;border-radius:12px;}
+
+    .gfg-stats{padding:20px;border-radius:12px;background:#101014;border:1px solid rgba(255,255,255,.05)}
+    .gfg-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:22px}
+    .gfg-kpi{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05)}
+    .gfg-kpi-main{background:rgba(47,141,70,.12);border-color:rgba(47,141,70,.35)}
+    .gfg-kpi-num{font-family:'JetBrains Mono',monospace;font-size:1.35rem;font-weight:600;color:#fff;line-height:1.2}
+    .gfg-kpi-main .gfg-kpi-num{color:#4ade80}
+    .gfg-kpi-label{font-size:.7rem;color:#6b7280;text-transform:uppercase;letter-spacing:1px}
+    .gfg-breakdown{display:flex;flex-direction:column;gap:10px}
+    .gfg-row{display:grid;grid-template-columns:62px 1fr 38px;align-items:center;gap:12px}
+    .gfg-label{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:#9ca3af}
+    .gfg-bar{height:8px;border-radius:4px;background:rgba(255,255,255,.06);overflow:hidden}
+    .gfg-bar i{display:block;height:100%;border-radius:4px;min-width:2px}
+    .gfg-school{background:#64748b}.gfg-basic{background:#38bdf8}.gfg-easy{background:#5cb85c}.gfg-medium{background:#f0ad4e}.gfg-hard{background:#d9534f}
+    .gfg-num{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#e5e7eb;text-align:right}
+    .gfg-asof{margin-top:16px;font-size:.7rem;color:#4b5563}
 
     /* ===== CONTACT ===== */
     #contact{background:linear-gradient(180deg,#0a0a12 0%,#06060a 100%)}
@@ -660,6 +732,180 @@
     ::-webkit-scrollbar-track{background:#06060a}
     ::-webkit-scrollbar-thumb{background:#1f2937;border-radius:3px}
     ::-webkit-scrollbar-thumb:hover{background:#374151}
+
+    /* ===== THEME TOGGLE ===== */
+    html{color-scheme:dark}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .theme-toggle{
+      width:38px;height:38px;border-radius:10px;cursor:pointer;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+      color:#c8cad0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);transition:all .3s;
+    }
+    .theme-toggle:hover{color:#fff;border-color:rgba(99,102,241,.4);background:rgba(99,102,241,.1)}
+    .theme-toggle .icon-moon{display:none}
+    html[data-theme="light"] .theme-toggle .icon-sun{display:none}
+    html[data-theme="light"] .theme-toggle .icon-moon{display:block}
+
+    /* ===== LIGHT THEME ===== */
+    html[data-theme="light"]{color-scheme:light}
+    html[data-theme="light"] body{background:#f7f7fb;color:#334155}
+    html[data-theme="light"] body::before{opacity:.015}
+    html[data-theme="light"] .section-eyebrow,
+    html[data-theme="light"] .nav-logo span,
+    html[data-theme="light"] .hero-name .gradient,
+    html[data-theme="light"] .stat-number{background-image:linear-gradient(135deg,#4f46e5 0%,#059669 50%,#4f46e5 100%)}
+    html[data-theme="light"] .section-heading,
+    html[data-theme="light"] .nav-logo,
+    html[data-theme="light"] .hero-name,
+    html[data-theme="light"] .skill-card h3,
+    html[data-theme="light"] .tl-role,
+    html[data-theme="light"] .proj-card h3,
+    html[data-theme="light"] .edu-degree,
+    html[data-theme="light"] .certs-section h3,
+    html[data-theme="light"] .cert-card h4,
+    html[data-theme="light"] .cp-section h3,
+    html[data-theme="light"] .heatmap-card-header h4,
+    html[data-theme="light"] .contact-info h3,
+    html[data-theme="light"] .hero-float-card .num,
+    html[data-theme="light"] #success-alert p,
+    html[data-theme="light"] .chat-title strong{color:#0f172a}
+
+    html[data-theme="light"] nav{background:rgba(247,247,251,.72);border-bottom-color:rgba(15,23,42,.06)}
+    html[data-theme="light"] nav.scrolled{background:rgba(247,247,251,.94);box-shadow:0 8px 30px rgba(15,23,42,.08)}
+    html[data-theme="light"] .nav-links a,
+    html[data-theme="light"] .mobile-menu a{color:#475569}
+    html[data-theme="light"] .nav-links a:hover,
+    html[data-theme="light"] .nav-links a.active,
+    html[data-theme="light"] .mobile-menu a:hover{color:#0f172a;background:rgba(15,23,42,.06)}
+    html[data-theme="light"] .mobile-menu{background:rgba(247,247,251,.98);border-bottom-color:rgba(15,23,42,.08)}
+    html[data-theme="light"] .mobile-menu a{border-bottom-color:rgba(15,23,42,.06)}
+    html[data-theme="light"] .hamburger span{background:#0f172a}
+    html[data-theme="light"] .theme-toggle{color:#475569;background:#fff;border-color:rgba(15,23,42,.12)}
+    html[data-theme="light"] .theme-toggle:hover{color:#4f46e5;border-color:rgba(79,70,229,.4)}
+
+    html[data-theme="light"] .hero-gradient .orb{opacity:.16}
+    html[data-theme="light"] .hero-grid{opacity:.5;background-image:linear-gradient(rgba(15,23,42,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.05) 1px,transparent 1px)}
+    html[data-theme="light"] .hero-badge{color:#4338ca;background:rgba(79,70,229,.08);border-color:rgba(79,70,229,.25)}
+    html[data-theme="light"] .hero-subtitle{color:#475569}
+    html[data-theme="light"] .hero-typed-wrap{color:#059669}
+    html[data-theme="light"] .hero-desc{color:#475569}
+    html[data-theme="light"] .btn-glass{color:#1e293b;background:rgba(255,255,255,.7);border-color:rgba(15,23,42,.14)}
+    html[data-theme="light"] .btn-glass:hover{background:#fff;border-color:rgba(79,70,229,.4)}
+    html[data-theme="light"] .hero-socials a,
+    html[data-theme="light"] .footer-socials a{color:#475569;background:#fff;border-color:rgba(15,23,42,.1)}
+    html[data-theme="light"] .hero-socials a:hover,
+    html[data-theme="light"] .footer-socials a:hover{color:#4f46e5;border-color:rgba(79,70,229,.35)}
+    html[data-theme="light"] .hero-float-card{background:rgba(255,255,255,.92);color:#334155;border-color:rgba(15,23,42,.08);box-shadow:0 8px 32px rgba(15,23,42,.1)}
+    html[data-theme="light"] .hero-image-frame,
+    html[data-theme="light"] .about-photo img{border-color:rgba(15,23,42,.08);box-shadow:0 20px 50px rgba(15,23,42,.12)}
+
+    html[data-theme="light"] #about,
+    html[data-theme="light"] #experience,
+    html[data-theme="light"] #education{background:linear-gradient(180deg,#f7f7fb 0%,#eef0f7 100%)}
+    html[data-theme="light"] #skills,
+    html[data-theme="light"] #projects,
+    html[data-theme="light"] #contact{background:linear-gradient(180deg,#eef0f7 0%,#f7f7fb 100%)}
+    html[data-theme="light"] .about-text p,
+    html[data-theme="light"] .tl-bullets li{color:#475569}
+
+    html[data-theme="light"] .stat-card,
+    html[data-theme="light"] .skill-card,
+    html[data-theme="light"] .tl-item,
+    html[data-theme="light"] .proj-card,
+    html[data-theme="light"] .edu-card,
+    html[data-theme="light"] .cert-card,
+    html[data-theme="light"] .heatmap-card,
+    html[data-theme="light"] .c-item,
+    html[data-theme="light"] .glow-border{background:#fff;border-color:rgba(15,23,42,.08);box-shadow:0 1px 3px rgba(15,23,42,.04)}
+    html[data-theme="light"] .stat-card:hover,
+    html[data-theme="light"] .skill-card:hover,
+    html[data-theme="light"] .tl-item:hover,
+    html[data-theme="light"] .proj-card:hover,
+    html[data-theme="light"] .edu-card:hover,
+    html[data-theme="light"] .cert-card:hover,
+    html[data-theme="light"] .heatmap-card:hover,
+    html[data-theme="light"] .c-item:hover{background:#fff;border-color:rgba(79,70,229,.3);box-shadow:0 14px 40px rgba(15,23,42,.1)}
+    html[data-theme="light"] .stat-label,
+    html[data-theme="light"] .proj-card p,
+    html[data-theme="light"] .edu-detail,
+    html[data-theme="light"] .cert-card .cert-issuer,
+    html[data-theme="light"] .contact-info>p,
+    html[data-theme="light"] .form-group label{color:#64748b}
+    html[data-theme="light"] .tl-loc,
+    html[data-theme="light"] .edu-date,
+    html[data-theme="light"] .c-label{color:#94a3b8}
+
+    html[data-theme="light"] .skill-tag,
+    html[data-theme="light"] .proj-tech span{color:#4338ca;background:rgba(79,70,229,.06);border-color:rgba(79,70,229,.14)}
+    html[data-theme="light"] .skill-tag:hover{color:#312e81;background:rgba(79,70,229,.12);border-color:rgba(79,70,229,.3)}
+    html[data-theme="light"] .tl-item::before{background:#f7f7fb}
+    html[data-theme="light"] .tl-date{color:#4338ca;border-color:rgba(79,70,229,.2)}
+    html[data-theme="light"] .tl-company,
+    html[data-theme="light"] .edu-school{color:#059669}
+
+    html[data-theme="light"] .proj-link{color:#64748b;background:#f8fafc;border-color:rgba(15,23,42,.1)}
+    html[data-theme="light"] .proj-link:hover{color:#4f46e5;border-color:rgba(79,70,229,.35);background:rgba(79,70,229,.06)}
+    html[data-theme="light"] .proj-cat-ai{color:#4f46e5}
+    html[data-theme="light"] .proj-cat-web{color:#059669}
+    html[data-theme="light"] .proj-cat-ml{color:#c026d3}
+    html[data-theme="light"] .proj-impact{color:#047857;background:rgba(5,150,105,.06);border-color:rgba(5,150,105,.18)}
+    html[data-theme="light"] .proj-demo{color:#4338ca;border-color:rgba(79,70,229,.3);background:rgba(79,70,229,.06)}
+    html[data-theme="light"] .proj-demo:hover{color:#fff;background:#4f46e5}
+    html[data-theme="light"] .proj-filter{color:#475569;background:#fff;border-color:rgba(15,23,42,.1)}
+    html[data-theme="light"] .proj-filter span{color:#64748b;background:rgba(15,23,42,.06)}
+    html[data-theme="light"] .proj-filter:hover{color:#0f172a;border-color:rgba(79,70,229,.35)}
+    html[data-theme="light"] .proj-filter[aria-pressed="true"]{color:#312e81;background:rgba(79,70,229,.1);border-color:rgba(79,70,229,.45)}
+    html[data-theme="light"] .proj-filter[aria-pressed="true"] span{color:#fff;background:#4f46e5}
+    html[data-theme="light"] .proj-group{color:#64748b;border-bottom-color:rgba(15,23,42,.08)}
+
+    html[data-theme="light"] .cert-verify,
+    html[data-theme="light"] .heatmap-card-header a{color:#4338ca}
+    html[data-theme="light"] .cert-card.hr{--cert-color:#16a34a}
+    html[data-theme="light"] .c-value{color:#1e293b}
+    html[data-theme="light"] .c-icon{color:#4f46e5}
+    html[data-theme="light"] .form-group input,
+    html[data-theme="light"] .form-group textarea{color:#0f172a;background:#fff;border-color:rgba(15,23,42,.14)}
+    html[data-theme="light"] .form-group input::placeholder,
+    html[data-theme="light"] .form-group textarea::placeholder{color:#94a3b8}
+    html[data-theme="light"] #success-alert{background:rgba(255,255,255,.97);box-shadow:0 24px 80px rgba(15,23,42,.2)}
+    html[data-theme="light"] #success-alert button{color:#0f172a;background:#f1f5f9;border-color:rgba(15,23,42,.15)}
+
+    html[data-theme="light"] footer{background:linear-gradient(180deg,#f7f7fb,#eceef5);border-top-color:rgba(15,23,42,.06)}
+    html[data-theme="light"] footer p{color:#64748b}
+    html[data-theme="light"] footer p a{color:#475569}
+    html[data-theme="light"] footer p a:hover{color:#4f46e5}
+
+    html[data-theme="light"] .chat-panel{background:rgba(255,255,255,.98);box-shadow:0 24px 80px rgba(15,23,42,.18)}
+    html[data-theme="light"] .chat-head{border-bottom-color:rgba(15,23,42,.08);background:linear-gradient(135deg,rgba(79,70,229,.08),rgba(5,150,105,.04))}
+    html[data-theme="light"] .chat-title span{color:#64748b}
+    html[data-theme="light"] .chat-close{color:#64748b;background:rgba(15,23,42,.05)}
+    html[data-theme="light"] .chat-close:hover{color:#0f172a;background:rgba(15,23,42,.1)}
+    html[data-theme="light"] .chat-msg.bot{color:#1e293b;background:#f1f5f9;border-color:rgba(15,23,42,.06)}
+    html[data-theme="light"] .chat-msg.bot strong{color:#0f172a}
+    html[data-theme="light"] .chat-msg.bot a{color:#4338ca}
+    html[data-theme="light"] .chat-msg.error{background:rgba(248,113,113,.08);border-color:rgba(220,38,38,.25)}
+    html[data-theme="light"] .chat-suggest button{color:#4338ca;background:rgba(79,70,229,.06)}
+    html[data-theme="light"] .chat-suggest button:hover{color:#312e81;background:rgba(79,70,229,.14)}
+    html[data-theme="light"] .chat-form{border-top-color:rgba(15,23,42,.08)}
+    html[data-theme="light"] .chat-form input{color:#0f172a;background:#f8fafc;border-color:rgba(15,23,42,.12)}
+    html[data-theme="light"] .chat-form input::placeholder{color:#94a3b8}
+    html[data-theme="light"] .chat-note{color:#94a3b8}
+    html[data-theme="light"] .chat-log::-webkit-scrollbar-thumb{background:#cbd5e1}
+
+    html[data-theme="light"] .gfg-stats{background:#f8fafc;border-color:rgba(15,23,42,.08)}
+    html[data-theme="light"] .gfg-kpi{background:#fff;border-color:rgba(15,23,42,.08)}
+    html[data-theme="light"] .gfg-kpi-main{background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.3)}
+    html[data-theme="light"] .gfg-kpi-num{color:#0f172a}
+    html[data-theme="light"] .gfg-kpi-main .gfg-kpi-num{color:#15803d}
+    html[data-theme="light"] .gfg-kpi-label,
+    html[data-theme="light"] .gfg-asof{color:#64748b}
+    html[data-theme="light"] .gfg-label{color:#475569}
+    html[data-theme="light"] .gfg-num{color:#0f172a}
+    html[data-theme="light"] .gfg-bar{background:rgba(15,23,42,.08)}
+
+    html[data-theme="light"] ::-webkit-scrollbar-track{background:#f1f5f9}
+    html[data-theme="light"] ::-webkit-scrollbar-thumb{background:#cbd5e1}
+    html[data-theme="light"] ::-webkit-scrollbar-thumb:hover{background:#94a3b8}
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
@@ -678,8 +924,14 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Let's Talk</a>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <div class="nav-actions">
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Switch to light mode">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#hero" onclick="closeMenu()">Home</a>
@@ -756,7 +1008,7 @@
         <span class="section-eyebrow reveal">About Me</span>
         <h2 class="section-heading reveal">Building systems that<br>scale and matter</h2>
         <div class="about-text reveal">
-          <p>I am a Master's student in Computer Science at USC (graduating May 2026) with hands-on experience building backend systems and applied AI solutions through internships and academic projects.</p>
+          <p>I graduated from USC with a Master's in Computer Science in May 2026, with hands-on experience building backend systems and applied AI solutions through internships and academic projects.</p>
           <p>At Fiscali, I built a GPT-4 powered pipeline that transforms complex financial agreements into structured datasets, improving processing speed by 3x and reducing manual effort by 80%. At RazorThink, I deployed machine learning models on AWS for 1.2M+ users, reducing inference latency from 800ms to 600ms.</p>
           <p>I enjoy working on backend engineering, APIs, and scalable systems, especially where machine learning meets real-world applications.</p>
         </div>
@@ -788,62 +1040,68 @@
     <h2 class="section-heading reveal">Skills & Technologies</h2>
     <div class="skills-orbit">
       <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-card-icon">&#128187;</div>
-        <h3>Languages</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span><span class="skill-tag">C++</span><span class="skill-tag">Java</span>
-          <span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span class="skill-tag">SQL</span><span class="skill-tag">Dart</span><span class="skill-tag">HTML/CSS</span>
-        </div>
-      </div>
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-card-icon">&#9881;&#65039;</div>
-        <h3>Backend & Frameworks</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span><span class="skill-tag">Flask</span>
-          <span class="skill-tag">Spring Boot</span><span class="skill-tag">React</span><span class="skill-tag">Django</span>
-          <span class="skill-tag">Next.js</span><span class="skill-tag">Tailwind CSS</span>
-        </div>
-      </div>
-      <div class="skill-card reveal reveal-delay-3">
-        <div class="skill-card-icon">&#9729;&#65039;</div>
-        <h3>Cloud & DevOps</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">AWS</span><span class="skill-tag">SageMaker</span><span class="skill-tag">Lambda</span>
-          <span class="skill-tag">EC2</span><span class="skill-tag">S3</span><span class="skill-tag">Docker</span><span class="skill-tag">Azure</span>
-        </div>
-      </div>
-      <div class="skill-card reveal reveal-delay-1">
         <div class="skill-card-icon">&#129302;</div>
-        <h3>AI / Machine Learning</h3>
+        <h3>LLMs &amp; AI Agents</h3>
         <div class="skill-tags">
-          <span class="skill-tag">TensorFlow</span><span class="skill-tag">Keras</span><span class="skill-tag">OpenAI API</span>
-          <span class="skill-tag">LangChain</span><span class="skill-tag">FAISS</span><span class="skill-tag">RAG</span>
-          <span class="skill-tag">TF-IDF</span><span class="skill-tag">K-Means</span><span class="skill-tag">GPT-4</span>
+          <span class="skill-tag">OpenAI API</span><span class="skill-tag">Gemini API</span><span class="skill-tag">LangChain</span><span class="skill-tag">RAG</span><span class="skill-tag">FAISS</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Browser Automation (Playwright)</span><span class="skill-tag">LiveKit Agents</span><span class="skill-tag">Deepgram</span><span class="skill-tag">Cartesia</span>
         </div>
       </div>
       <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-card-icon">&#128451;&#65039;</div>
-        <h3>Databases</h3>
+        <div class="skill-card-icon">&#129504;</div>
+        <h3>Machine Learning</h3>
         <div class="skill-tags">
-          <span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">SQLite</span>
-          <span class="skill-tag">Redis</span><span class="skill-tag">MS Access</span>
+          <span class="skill-tag">TensorFlow</span><span class="skill-tag">Keras</span><span class="skill-tag">scikit-learn</span><span class="skill-tag">Transfer Learning</span><span class="skill-tag">NLP</span><span class="skill-tag">OpenCV</span><span class="skill-tag">TF-IDF</span><span class="skill-tag">K-Means</span>
         </div>
       </div>
       <div class="skill-card reveal reveal-delay-3">
-        <div class="skill-card-icon">&#128295;</div>
-        <h3>Tools & Platforms</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Git</span><span class="skill-tag">WordPress</span><span class="skill-tag">Flutter</span>
-          <span class="skill-tag">CloudWatch</span><span class="skill-tag">REST APIs</span>
-        </div>
-      </div>
-      <div class="skill-card reveal reveal-delay-1">
         <div class="skill-card-icon">&#10024;</div>
         <h3>AI Tools</h3>
         <div class="skill-tags">
           <span class="skill-tag">ChatGPT / GPT-4</span><span class="skill-tag">Claude</span><span class="skill-tag">GitHub Copilot</span>
           <span class="skill-tag">Cursor</span><span class="skill-tag">LangChain</span><span class="skill-tag">Midjourney</span>
           <span class="skill-tag">Perplexity</span><span class="skill-tag">v0 by Vercel</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-icon">&#128187;</div>
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">C++</span><span class="skill-tag">TypeScript</span><span class="skill-tag">JavaScript</span><span class="skill-tag">SQL</span><span class="skill-tag">Dart</span><span class="skill-tag">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-icon">&#9881;&#65039;</div>
+        <h3>Backend &amp; APIs</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Spring Boot</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span><span class="skill-tag">Flask</span><span class="skill-tag">Django</span><span class="skill-tag">REST APIs</span><span class="skill-tag">JWT Auth</span><span class="skill-tag">JPA / Hibernate</span><span class="skill-tag">Sequelize</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-card-icon">&#127912;</div>
+        <h3>Frontend</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span><span class="skill-tag">Next.js</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Vite</span><span class="skill-tag">zod</span><span class="skill-tag">Streamlit</span><span class="skill-tag">Gradio</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-icon">&#9729;&#65039;</div>
+        <h3>Cloud &amp; DevOps</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS</span><span class="skill-tag">EC2</span><span class="skill-tag">S3</span><span class="skill-tag">RDS</span><span class="skill-tag">Lambda</span><span class="skill-tag">SageMaker</span><span class="skill-tag">CloudFormation</span><span class="skill-tag">CloudWatch</span><span class="skill-tag">Docker</span><span class="skill-tag">Azure</span><span class="skill-tag">Cloudflare Workers</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-icon">&#128451;&#65039;</div>
+        <h3>Databases</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">MySQL</span><span class="skill-tag">SQLite</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Redis</span><span class="skill-tag">MS Access</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-card-icon">&#128295;</div>
+        <h3>Testing &amp; Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span><span class="skill-tag">pytest</span><span class="skill-tag">mypy</span><span class="skill-tag">Ruff</span><span class="skill-tag">Twilio</span><span class="skill-tag">WordPress</span><span class="skill-tag">Flutter</span>
         </div>
       </div>
     </div>
@@ -862,7 +1120,7 @@
       <div class="tl-item reveal">
         <div class="tl-header">
           <span class="tl-role">Teaching Assistant</span>
-          <span class="tl-date">Aug 2025 &mdash; Present</span>
+          <span class="tl-date">Aug 2025 &mdash; May 2026</span>
         </div>
         <div class="tl-company">USC Viterbi School of Engineering</div>
         <div class="tl-loc">Los Angeles, CA</div>
@@ -951,100 +1209,179 @@
   <div class="container">
     <span class="section-eyebrow reveal">Portfolio</span>
     <h2 class="section-heading reveal">Featured Projects</h2>
-    <div class="projects-grid">
-
-      <div class="proj-card reveal">
+    <div class="proj-filters reveal" role="group" aria-label="Filter projects">
+      <button type="button" class="proj-filter" data-filter="featured" aria-pressed="true">Featured <span>6</span></button>
+      <button type="button" class="proj-filter" data-filter="ai" aria-pressed="false">AI Agents &amp; LLMs <span>4</span></button>
+      <button type="button" class="proj-filter" data-filter="web" aria-pressed="false">Full-Stack &amp; Backend <span>5</span></button>
+      <button type="button" class="proj-filter" data-filter="ml" aria-pressed="false">Machine Learning <span>6</span></button>
+      <button type="button" class="proj-filter" data-filter="all" aria-pressed="false">All <span>15</span></button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="proj-group" data-cat="ai-heading">AI Agents &amp; LLMs</div>
+      <div class="proj-card reveal" data-cat="ai featured">
+        <div class="proj-header">
+          <div class="proj-icon">&#128257;</div>
+          <a href="https://github.com/ishan0410/reprise" target="_blank" rel="noopener" class="proj-link" aria-label="Reprise: Computer-Use Automation on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ai">AI Agents &amp; LLMs</span>
+        <h3>Reprise: Computer-Use Automation</h3>
+        <p>An LLM figures out a task in a legacy back-office web app once; every run after that needs no model. Reprise compiles one AI-driven run into a typed capability and replays it deterministically. Policy decides what may happen, and when replay gets stuck a person takes over the same browser.</p>
+        <div class="proj-impact">109 tests passing · secrets never reach the model</div>
+        <div class="proj-tech"><span>Python</span><span>Playwright</span><span>Pydantic</span><span>Gemini API</span><span>pytest</span></div>
+        <a class="proj-demo" href="https://ishan0410.github.io/reprise/" target="_blank" rel="noopener">Live showcase &rarr;</a>
+      </div>
+      <div class="proj-card reveal" data-cat="ai featured">
+        <div class="proj-header">
+          <div class="proj-icon">&#128222;</div>
+          <a href="https://github.com/ishan0410/pgai-voice-bot" target="_blank" rel="noopener" class="proj-link" aria-label="AI Patient Voice Bot on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ai">AI Agents &amp; LLMs</span>
+        <h3>AI Patient Voice Bot</h3>
+        <p>A voice bot that phones an AI healthcare receptionist as a simulated patient: booking, rescheduling, refills, interruptions and other edge cases. Every call is recorded, transcribed and run through automated bug analysis.</p>
+        <div class="proj-impact">13 goal-driven scenarios · real phone calls over SIP</div>
+        <div class="proj-tech"><span>Python</span><span>LiveKit Agents</span><span>Twilio SIP</span><span>Deepgram</span><span>Cartesia</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="ai featured">
         <div class="proj-header">
           <div class="proj-icon">&#129302;</div>
-          <a href="https://github.com/ishan0410/AI-Research-Agent" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a href="https://github.com/ishan0410/AI-Research-Agent" target="_blank" rel="noopener" class="proj-link" aria-label="AI Research Agent on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
+        <span class="proj-cat proj-cat-ai">AI Agents &amp; LLMs</span>
         <h3>AI Research Agent</h3>
-        <p>Autonomous research assistant powered by LangChain and GPT-4o with RAG pipeline, FAISS vectorstore, web search, and source citations.</p>
+        <p>An autonomous research assistant. The agent decides whether to search your documents, search the web or summarize, using a FAISS-backed RAG pipeline, and cites its sources inline.</p>
+        <div class="proj-impact">PDFs, text and web pages · 3 tools · conversation memory</div>
         <div class="proj-tech"><span>LangChain</span><span>GPT-4o</span><span>FAISS</span><span>Streamlit</span></div>
       </div>
-
-      <div class="proj-card reveal">
+      <div class="proj-card reveal" data-cat="ai">
+        <div class="proj-header">
+          <div class="proj-icon">&#128221;</div>
+          <a href="https://github.com/ishan0410/RAG-based-quiz-generator" target="_blank" rel="noopener" class="proj-link" aria-label="RAG Quiz Generator on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ai">AI Agents &amp; LLMs</span>
+        <h3>RAG Quiz Generator</h3>
+        <p>Turns any PDF into an interactive multiple-choice quiz. Passages are retrieved with switchable FAISS (semantic) or TF-IDF (keyword) search, then questions are generated with answers and explanations.</p>
+        <div class="proj-impact">3 difficulty levels · live grading and score tracking</div>
+        <div class="proj-tech"><span>LangChain</span><span>FAISS</span><span>scikit-learn</span><span>OpenAI API</span><span>Gradio</span></div>
+      </div>
+      <div class="proj-group" data-cat="web-heading">Full-Stack &amp; Backend</div>
+      <div class="proj-card reveal" data-cat="web featured">
+        <div class="proj-header">
+          <div class="proj-icon">&#127903;&#65039;</div>
+          <a href="https://github.com/ishan0410/adaptive-ticket-pricing" target="_blank" rel="noopener" class="proj-link" aria-label="Adaptive Ticket Pricing on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-web">Full-Stack &amp; Backend</span>
+        <h3>Adaptive Ticket Pricing</h3>
+        <p>A dynamic pricing engine for event tickets that reprices every 15 minutes on demand, urgency and scarcity, with an audited price history. The Spring Boot API uses JWT auth and row-level locking so two buyers can't get the last seat.</p>
+        <div class="proj-impact">p95 latency 480 → 190 ms · listing queries 11 → 1</div>
+        <div class="proj-tech"><span>Java 17</span><span>Spring Boot</span><span>MySQL</span><span>React</span><span>AWS</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="web featured">
+        <div class="proj-header">
+          <div class="proj-icon">&#129534;</div>
+          <a href="https://github.com/ishan0410/receipt-split" target="_blank" rel="noopener" class="proj-link" aria-label="Receipt Split on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-web">Full-Stack &amp; Backend</span>
+        <h3>Receipt Split</h3>
+        <p>Photograph a grocery receipt, say who took what, and get cent-exact shares. Tax is prorated on taxable items only, per-item coupons go to whoever took the item, and rounding is reconciled so shares always add up to the printed total.</p>
+        <div class="proj-impact">Vision-model receipt parsing · review before saving</div>
+        <div class="proj-tech"><span>Python</span><span>FastAPI</span><span>React</span><span>Gemini API</span><span>SQLite</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="web">
+        <div class="proj-header">
+          <div class="proj-icon">&#128101;</div>
+          <a href="https://github.com/ishan0410/members-console" target="_blank" rel="noopener" class="proj-link" aria-label="Members Console on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-web">Full-Stack &amp; Backend</span>
+        <h3>Members Console</h3>
+        <p>A full-stack user management console: a sortable, searchable, infinite-scroll directory with create, edit and delete, a mobile card layout, keyboard shortcuts and accessible modals. One zod schema validates both client and server.</p>
+        <div class="proj-impact">Debounced search · focus-trapped modals · 1,000+ seeded users</div>
+        <div class="proj-tech"><span>TypeScript</span><span>Next.js</span><span>Express</span><span>Sequelize</span><span>Tailwind</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="web">
         <div class="proj-header">
           <div class="proj-icon">&#128240;</div>
-          <a href="https://github.com/ishan0410/News_headlines" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a href="https://github.com/ishan0410/News_headlines" target="_blank" rel="noopener" class="proj-link" aria-label="News Headlines Aggregator on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
+        <span class="proj-cat proj-cat-web">Full-Stack &amp; Backend</span>
         <h3>News Headlines Aggregator</h3>
-        <p>Real-time news aggregator fetching headlines from BBC, CNN, Reuters & AP with a responsive card-based UI and server-side API routes.</p>
+        <p>Real-time news aggregator fetching headlines from BBC, CNN, Reuters and AP, with a responsive card-based UI and server-side API routes.</p>
         <div class="proj-tech"><span>Next.js 15</span><span>TypeScript</span><span>Tailwind</span><span>NewsAPI</span></div>
       </div>
-
-
-      <div class="proj-card reveal">
-        <div class="proj-header">
-          <div class="proj-icon">&#128218;</div>
-          <a href="https://github.com/ishan0410/Intelligent_Tour_Guide" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        <h3>Intelligent Tour Guide</h3>
-        <p>Published research — personalized trip recommendation system using intelligent algorithms and user preference analysis.</p>
-        <div class="proj-tech"><span>Python</span><span>ML</span><span>Research</span></div>
-      </div>
-
-      <div class="proj-card reveal">
-        <div class="proj-header">
-          <div class="proj-icon">&#127793;</div>
-          <a href="https://github.com/ishan0410/Weather_Crop_Planning" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        <h3>Weather Crop Planning</h3>
-        <p>Data-driven crop planning system using weather-based ML recommendations to optimize agricultural decisions.</p>
-        <div class="proj-tech"><span>Python</span><span>ML</span><span>Data Science</span></div>
-      </div>
-
-      <div class="proj-card reveal">
-        <div class="proj-header">
-          <div class="proj-icon">&#127968;</div>
-          <a href="https://github.com/ishan0410/RealEstatePricePrediction" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        <h3>Real Estate Price Prediction</h3>
-        <p>Regression analysis through model comparison and cross-validation to predict real estate prices with high accuracy.</p>
-        <div class="proj-tech"><span>Python</span><span>Regression</span><span>Scikit-learn</span></div>
-      </div>
-
-      <div class="proj-card reveal">
-        <div class="proj-header">
-          <div class="proj-icon">&#128172;</div>
-          <a href="https://github.com/ishan0410/SentimentAnalysis" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        <h3>Sentiment Analysis</h3>
-        <p>ML model for text sentiment classification using NLP techniques and feature engineering for opinion mining.</p>
-        <div class="proj-tech"><span>Python</span><span>NLP</span><span>ML</span></div>
-      </div>
-
-      <div class="proj-card reveal">
-        <div class="proj-header">
-          <div class="proj-icon">&#127752;</div>
-          <a href="https://github.com/ishan0410/Air-Quality" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        <h3>Air Quality Prediction</h3>
-        <p>Forecasting pollution levels and environmental conditions using data-driven ML prediction models.</p>
-        <div class="proj-tech"><span>Python</span><span>Data Science</span><span>Prediction</span></div>
-      </div>
-
-      <div class="proj-card reveal">
-        <div class="proj-header">
-          <div class="proj-icon">&#9851;&#65039;</div>
-          <a href="https://github.com/ishan0410/Transfer-Learning-for-Waste-Image-Classification" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        <h3>Waste Image Classification</h3>
-        <p>Transfer learning pipeline classifying 4,752 waste images using ResNet101, achieving 0.97 ROC-AUC with data augmentation and regularization.</p>
-        <div class="proj-tech"><span>TensorFlow</span><span>ResNet101</span><span>OpenCV</span><span>Transfer Learning</span></div>
-      </div>
-
-      <div class="proj-card reveal">
+      <div class="proj-card reveal" data-cat="web">
         <div class="proj-header">
           <div class="proj-icon">&#128279;</div>
-          <a href="https://github.com/ishan0410/djangoproject_urlshortner" target="_blank" class="proj-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a href="https://github.com/ishan0410/djangoproject_urlshortner" target="_blank" rel="noopener" class="proj-link" aria-label="URL Shortener on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
+        <span class="proj-cat proj-cat-web">Full-Stack &amp; Backend</span>
         <h3>URL Shortener</h3>
         <p>Django-based URL shortening and redirection application with analytics tracking and custom short links.</p>
         <div class="proj-tech"><span>Django</span><span>Python</span><span>Web App</span></div>
       </div>
-
+      <div class="proj-group" data-cat="ml-heading">Machine Learning</div>
+      <div class="proj-card reveal" data-cat="ml featured">
+        <div class="proj-header">
+          <div class="proj-icon">&#9851;&#65039;</div>
+          <a href="https://github.com/ishan0410/Transfer-Learning-for-Waste-Image-Classification" target="_blank" rel="noopener" class="proj-link" aria-label="Waste Image Classification on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ml">Machine Learning</span>
+        <h3>Waste Image Classification</h3>
+        <p>Transfer-learning pipeline that classifies 4,752 waste images using ResNet101, with data augmentation and regularization.</p>
+        <div class="proj-impact">0.97 ROC-AUC</div>
+        <div class="proj-tech"><span>TensorFlow</span><span>ResNet101</span><span>OpenCV</span><span>Transfer Learning</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="ml">
+        <div class="proj-header">
+          <div class="proj-icon">&#128218;</div>
+          <a href="https://github.com/ishan0410/Intelligent_Tour_Guide" target="_blank" rel="noopener" class="proj-link" aria-label="Intelligent Tour Guide on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ml">Machine Learning</span>
+        <h3>Intelligent Tour Guide</h3>
+        <p>Published research: a personalized trip recommendation system using intelligent algorithms and user preference analysis.</p>
+        <div class="proj-impact">Published research paper</div>
+        <div class="proj-tech"><span>Python</span><span>ML</span><span>Research</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="ml">
+        <div class="proj-header">
+          <div class="proj-icon">&#127752;</div>
+          <a href="https://github.com/ishan0410/Air-Quality" target="_blank" rel="noopener" class="proj-link" aria-label="Air Quality Prediction on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ml">Machine Learning</span>
+        <h3>Air Quality Prediction</h3>
+        <p>Forecasting pollution levels and environmental conditions using data-driven ML prediction models.</p>
+        <div class="proj-tech"><span>Python</span><span>Data Science</span><span>Prediction</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="ml">
+        <div class="proj-header">
+          <div class="proj-icon">&#128172;</div>
+          <a href="https://github.com/ishan0410/SentimentAnalysis" target="_blank" rel="noopener" class="proj-link" aria-label="Sentiment Analysis on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ml">Machine Learning</span>
+        <h3>Sentiment Analysis</h3>
+        <p>ML model for text sentiment classification using NLP techniques and feature engineering for opinion mining.</p>
+        <div class="proj-tech"><span>Python</span><span>NLP</span><span>ML</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="ml">
+        <div class="proj-header">
+          <div class="proj-icon">&#127968;</div>
+          <a href="https://github.com/ishan0410/RealEstatePricePrediction" target="_blank" rel="noopener" class="proj-link" aria-label="Real Estate Price Prediction on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ml">Machine Learning</span>
+        <h3>Real Estate Price Prediction</h3>
+        <p>Regression analysis through model comparison and cross-validation to predict real estate prices.</p>
+        <div class="proj-tech"><span>Python</span><span>Regression</span><span>Scikit-learn</span></div>
+      </div>
+      <div class="proj-card reveal" data-cat="ml">
+        <div class="proj-header">
+          <div class="proj-icon">&#127793;</div>
+          <a href="https://github.com/ishan0410/Weather_Crop_Planning" target="_blank" rel="noopener" class="proj-link" aria-label="Weather Crop Planning on GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <span class="proj-cat proj-cat-ml">Machine Learning</span>
+        <h3>Weather Crop Planning</h3>
+        <p>Data-driven crop planning system using weather-based ML recommendations to optimize agricultural decisions.</p>
+        <div class="proj-tech"><span>Python</span><span>ML</span><span>Data Science</span></div>
+      </div>
     </div>
+    <div class="proj-more"><button type="button" id="projShowAll">See all 15 projects &rarr;</button></div>
   </div>
 </section>
 
@@ -1060,7 +1397,7 @@
         <div class="edu-degree">Master of Science in Computer Science</div>
         <div class="edu-school">University of Southern California</div>
         <div class="edu-date">August 2024 &mdash; May 2026</div>
-        <div class="edu-detail">Courses: Analysis of Algorithms, Information Retrieval and Web Search Engines</div>
+        <div class="edu-detail">CGPA: 3.71/4.0 &middot; Analysis of Algorithms, Information Retrieval and Web Search Engines</div>
       </div>
       <div class="edu-card reveal">
         <div class="edu-degree">Bachelor of Technology in Computer Engineering</div>
@@ -1073,6 +1410,34 @@
     <div class="certs-section reveal">
       <h3>Certifications</h3>
       <div class="cert-grid">
+
+        <a href="https://verify.skilljar.com/c/dwq8whr2h4cd" target="_blank" rel="noopener" class="cert-card anthropic">
+          <div class="cert-logo"><span class="cert-mono" aria-hidden="true">A</span></div>
+          <h4>Building with the Claude API</h4>
+          <span class="cert-issuer">Anthropic Academy</span>
+          <span class="cert-verify">Verify &rarr;</span>
+        </a>
+
+        <a href="https://verify.skilljar.com/c/rcfiejemahj9" target="_blank" rel="noopener" class="cert-card anthropic">
+          <div class="cert-logo"><span class="cert-mono" aria-hidden="true">A</span></div>
+          <h4>Claude Code in Action</h4>
+          <span class="cert-issuer">Anthropic Academy</span>
+          <span class="cert-verify">Verify &rarr;</span>
+        </a>
+
+        <a href="https://verify.skilljar.com/c/j7w25c8p6ha7" target="_blank" rel="noopener" class="cert-card anthropic">
+          <div class="cert-logo"><span class="cert-mono" aria-hidden="true">A</span></div>
+          <h4>Introduction to Model Context Protocol</h4>
+          <span class="cert-issuer">Anthropic Academy</span>
+          <span class="cert-verify">Verify &rarr;</span>
+        </a>
+
+        <a href="https://verify.skilljar.com/c/vvdhprie2udt" target="_blank" rel="noopener" class="cert-card anthropic">
+          <div class="cert-logo"><span class="cert-mono" aria-hidden="true">A</span></div>
+          <h4>Model Context Protocol: Advanced Topics</h4>
+          <span class="cert-issuer">Anthropic Academy</span>
+          <span class="cert-verify">Verify &rarr;</span>
+        </a>
 
         <a href="https://www.credly.com/badges/c31512b5-fc82-46d2-9421-6000752f77e9" target="_blank" class="cert-card aws">
           <div class="cert-logo">
@@ -1140,7 +1505,7 @@
             <h4>LeetCode</h4>
             <a href="https://leetcode.com/u/ishan0410/" target="_blank">View Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           </div>
-          <img src="https://leetcard.jacoblin.cool/ishan0410?theme=dark&font=JetBrains%20Mono&ext=heatmap&border=0&radius=12&hide=ranking" alt="LeetCode Stats & Heatmap" loading="lazy">
+          <img id="leetcodeCard" src="https://leetcard.jacoblin.cool/ishan0410?theme=dark&font=JetBrains%20Mono&ext=heatmap&border=0&radius=12&hide=ranking" data-light="https://leetcard.jacoblin.cool/ishan0410?theme=light&font=JetBrains%20Mono&ext=heatmap&border=0&radius=12&hide=ranking" alt="LeetCode Stats & Heatmap" loading="lazy">
         </div>
         <div class="heatmap-card">
           <div class="heatmap-card-header">
@@ -1148,7 +1513,22 @@
             <h4>GeeksforGeeks</h4>
             <a href="https://www.geeksforgeeks.org/user/ishan0410/" target="_blank">View Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           </div>
-          <img src="https://gfgstatscard.vercel.app/ishan0410?theme=dark" alt="GeeksforGeeks Coding Score & Stats" loading="lazy">
+          <div class="gfg-stats" aria-label="GeeksforGeeks stats">
+            <div class="gfg-kpis">
+              <div class="gfg-kpi gfg-kpi-main"><span class="gfg-kpi-num">2,419</span><span class="gfg-kpi-label">Coding Score</span></div>
+              <div class="gfg-kpi"><span class="gfg-kpi-num">642</span><span class="gfg-kpi-label">Problems Solved</span></div>
+              <div class="gfg-kpi"><span class="gfg-kpi-num">#2</span><span class="gfg-kpi-label">Institute Rank</span></div>
+              <div class="gfg-kpi"><span class="gfg-kpi-num">230</span><span class="gfg-kpi-label">Longest POTD Streak (days)</span></div>
+            </div>
+            <div class="gfg-breakdown">
+            <div class="gfg-row"><span class="gfg-label">School</span><span class="gfg-bar"><i class="gfg-school" style="width:0.0%"></i></span><span class="gfg-num">0</span></div>
+            <div class="gfg-row"><span class="gfg-label">Basic</span><span class="gfg-bar"><i class="gfg-basic" style="width:2.6%"></i></span><span class="gfg-num">17</span></div>
+            <div class="gfg-row"><span class="gfg-label">Easy</span><span class="gfg-bar"><i class="gfg-easy" style="width:25.2%"></i></span><span class="gfg-num">162</span></div>
+            <div class="gfg-row"><span class="gfg-label">Medium</span><span class="gfg-bar"><i class="gfg-medium" style="width:61.5%"></i></span><span class="gfg-num">395</span></div>
+            <div class="gfg-row"><span class="gfg-label">Hard</span><span class="gfg-bar"><i class="gfg-hard" style="width:10.6%"></i></span><span class="gfg-num">68</span></div>
+            </div>
+            <p class="gfg-asof">Stats as of September 2026 &middot; live numbers on the profile</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1295,6 +1675,49 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
   err=>{console.error(err);alert("Failed to send. Please try again.")});
 });
 function closeAlert(){document.getElementById('success-alert').classList.add('hidden')}
+
+// ===== THEME TOGGLE =====
+(function(){
+  const root=document.documentElement,btn=document.getElementById('themeToggle');
+  function label(){
+    const next=root.dataset.theme==='light'?'dark':'light';
+    btn.setAttribute('aria-label','Switch to '+next+' mode');btn.title='Switch to '+next+' mode';
+  }
+  btn.addEventListener('click',()=>{
+    const light=root.dataset.theme!=='light';
+    if(light)root.dataset.theme='light';else delete root.dataset.theme;
+    try{localStorage.setItem('theme',light?'light':'dark')}catch(e){}
+    label();syncCards();
+  });
+  // Third-party stat images only come in fixed themes, so swap to the matching one.
+  const lc=document.getElementById('leetcodeCard');
+  if(lc)lc.dataset.dark=lc.getAttribute('src');
+  function syncCards(){if(lc)lc.src=root.dataset.theme==='light'?lc.dataset.light:lc.dataset.dark}
+  label();syncCards();
+})();
+
+// ===== PROJECT FILTERS =====
+(function(){
+  const grid=document.getElementById('projectsGrid');
+  if(!grid)return;
+  const tabs=document.querySelectorAll('.proj-filter'),more=document.querySelector('.proj-more');
+  function show(filter){
+    grid.dataset.view=filter;
+    grid.querySelectorAll('.proj-card').forEach(c=>{
+      const on=filter==='all'||c.dataset.cat.split(' ').includes(filter);
+      c.classList.toggle('is-hidden',!on);
+      if(on)c.classList.add('visible');
+    });
+    tabs.forEach(t=>t.setAttribute('aria-pressed',String(t.dataset.filter===filter)));
+    more.classList.toggle('is-hidden',filter!=='featured');
+  }
+  tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.filter)));
+  document.getElementById('projShowAll').addEventListener('click',()=>{
+    show('all');
+    document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+  });
+  show('featured');
+})();
 
 // ===== CHAT ASSISTANT =====
 // URL of the Cloudflare Worker (~/projects/portfolio-chat). The chat stays hidden while this is empty.
